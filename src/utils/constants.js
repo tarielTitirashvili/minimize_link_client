@@ -1,0 +1,1 @@
+export const LOCAL_STORAGE_NAME = 'AUTH_INFO_KEY'
