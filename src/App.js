@@ -5,15 +5,21 @@ import {BrowserRouter} from 'react-router-dom'
 import AuthContext from './context/authContext';
 import { useAuth } from './Hooks/auth.hooks';
 import Navigation from './components/Navigation';
+import Loader from './components/Loader';
 
 function App() {
-  const {login, logOut, token, userId} = useAuth()
+  const {login, logOut, token, userId, ready} = useAuth()
   const isAuth = !!token
+
+  if(!ready){
+    return <Loader />
+  }
 
   return (
     <AuthContext.Provider value={{
       login, logOut, token, userId, isAuth
     }} >
+
       <BrowserRouter>
         {isAuth? <Navigation/>: ''}
         <Routing isAuth={isAuth}/>

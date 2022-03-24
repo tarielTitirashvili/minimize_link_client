@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import Loader from '../components/Loader';
 import { useHttp } from '../Hooks/http.hooks'
 import { useMassage } from '../Hooks/message.hooks'
 import AuthContext from './../context/authContext';
@@ -33,7 +34,7 @@ export default function Auth() {
   const changeHandler=event=>{
     setForm({...form, [event.target.name]: event.target.value})
   }
-
+  if(loading)return <Loader />
   return (
     <div className='row'>
       <div className='col s6 offset-s3'>
