@@ -9,6 +9,7 @@ import Loader from './components/Loader';
 
 function App() {
   const {login, logOut, token, userId, ready} = useAuth()
+
   const isAuth = !!token
 
   if(!ready){

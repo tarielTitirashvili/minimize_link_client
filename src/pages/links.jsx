@@ -12,7 +12,6 @@ export default function Links() {
   const getLinks = async () => {
     try{
       const data = await request('/api/links', 'GET', null, {Authorization: `Bearer ${token}`})
-      console.log(data[0])
       setLinks(data)
     }catch(e){}
   }
@@ -26,21 +25,21 @@ export default function Links() {
       <table>
         <thead>
           <tr>
-            <th>N</th>
-            <th>original link</th>
+            <th className='s2'>N</th>
+            <th  className='s2'>original link</th>
             <th>short link</th>
             <th>open</th>
           </tr>
         </thead>
       {
         links.map((link, index)=>{
-          return <tbody>
+          return <tbody key={link._id}>
             <tr>
-              <td>{index+1}</td>
-              <td>{link.from}</td>
+              <td  className='s2'>{index+1}</td>
+              <td  className='s2'>{link.from}</td>
               <td>{link.to}</td>
               <td>
-                <Link to={link.to}>open</Link>
+                <a target={'_blank'} href={link.to}>open</a>
               </td> 
             </tr>
           </tbody>

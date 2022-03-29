@@ -14,7 +14,6 @@ export default function Details() {
     try{
       const data = await request(`/api/links/${id}`, 'GET', null, {Authorization: `Bearer ${token}`})
       setLink(data)
-      console.log(data)
     }catch(e){}
   }
   useEffect(()=>{

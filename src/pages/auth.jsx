@@ -10,6 +10,7 @@ export default function Auth() {
   const [form, setForm] = useState({
     email: '', password: ''
   })
+
   const message = useMassage()
   useEffect(()=>{
     message(error)
@@ -28,12 +29,13 @@ export default function Auth() {
       const data = await request('/api/auth/login', 'POST', {...form})
       message(data.message)
       auth.login(data.token, data.userId)
-      console.log(data)
     }catch(e){}
   }
+
   const changeHandler=event=>{
     setForm({...form, [event.target.name]: event.target.value})
   }
+
   if(loading)return <Loader />
   return (
     <div className='row'>

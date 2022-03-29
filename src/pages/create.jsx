@@ -10,7 +10,6 @@ export default function Create() {
   const {request, loading} = useHttp()
   const [link, setLink] = useState('')
   async function pressHandler(event) {
-    console.log(token)
     if(event.key==='Enter'){
       try{
         const data = await request('api/links/generate', 'POST',{from: link},{Authorization: `Bearer ${token}`})
